@@ -1,8 +1,6 @@
 name: Node CI
 
-on:
-  pull_request:
-    branches: [master]
+on: push
 
 defaults:
   run:
