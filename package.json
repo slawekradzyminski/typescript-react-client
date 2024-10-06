@@ -6,9 +6,9 @@
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
-        "build": "cross-env API_URL=https://java-backend-server-1-0.onrender.com webpack --mode production",
+        "build": "cross-env NODE_ENV=production webpack --mode production",
         "test": "jest",
-        "start": "cross-env API_URL=http://localhost:4001 webpack serve --open --port 8081"
+        "start": "cross-env NODE_ENV=development webpack serve --open --port 8081"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
