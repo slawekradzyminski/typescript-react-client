@@ -6,13 +6,10 @@ import ResponsiveAppBar from "../header/ResponsiveAppBar";
 import Footer from "./Footer";
 import "./styles.css";
 
-const isProduction = process.env.NODE_ENV === "production";
-const basename = isProduction ? "/typescript-react-client" : "";
-
 function App() {
   return (
     <ToastProvider>
-      <HashRouter basename={basename}>
+      <HashRouter>
         <div
           style={{
             display: "flex",
