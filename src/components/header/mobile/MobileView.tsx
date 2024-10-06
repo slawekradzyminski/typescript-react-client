@@ -6,11 +6,10 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import MenuItem from '@mui/material/MenuItem';
-import { loggedInPages, pagePaths, loggedOutPages, openSlots } from '../navbarConstants';
+import { loggedInPages, pagePaths, loggedOutPages } from '../navbarConstants';
 import { Menu } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../_reducers';
-import { isDoctorOrAdmin } from '../rolesHelper';
 
 const MobileView = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -18,7 +17,6 @@ const MobileView = () => {
     const navigate = useNavigate();
     const loggedIn = useSelector((state: RootState) => state.authentication.loggedIn);
     const user = useSelector((state: RootState) => state.authentication.user);
-    const userRoles = user?.roles || [];
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -78,9 +76,6 @@ const MobileView = () => {
                     }}
                 >
                     {loggedIn ? renderButtons(loggedInPages) : renderButtons(loggedOutPages)}
-                    {loggedIn && isDoctorOrAdmin(userRoles) && (
-                        renderButtons(openSlots)
-                    )}
                 </Menu>
             </Box>
             <BugReportIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import DoctorsPage from './DoctorsPage';
+import UsersPage from './UsersPage';
 import { userService } from '../../api/user.api';
 import UserTable from './UserTable';
 import { Roles, User } from '../../types';
@@ -28,7 +28,7 @@ jest.mock('./UserTable', () => {
 
 const mockSetToast = jest.fn()
 
-describe('DoctorsPage', () => {
+describe('UsersPage', () => {
     const mockUsers = [
         { username: 'doctor1', roles: [Roles.ROLE_DOCTOR], specialties: ['Cardiology'] },
         { username: 'doctor2', roles: [Roles.ROLE_DOCTOR], specialties: ['Neurology'] },
@@ -44,7 +44,7 @@ describe('DoctorsPage', () => {
 
     it('renders users correctly and filters them out', async () => {
         // given
-        render(<DoctorsPage />);
+        render(<UsersPage />);
 
         // then
         await waitFor(() => {
@@ -63,7 +63,7 @@ describe('DoctorsPage', () => {
         const userToDelete = mockUsers[0].username;
         render(
             <ToastContext.Provider value={mockSetToast}>
-                <DoctorsPage />
+                <UsersPage />
             </ToastContext.Provider>
         );
         await waitFor(() => screen.getByText(`Delete ${userToDelete}`));

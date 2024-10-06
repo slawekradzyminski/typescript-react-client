@@ -1,6 +1,15 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const definePlugin = new webpack.DefinePlugin({
+    'process.env': {
+        'API_URL': JSON.stringify(process.env.NODE_ENV === 'production'
+            ? 'https://java-backend-server-1-0.onrender.com'
+            : 'http://localhost:4001'
+        )
+    }
+});
+
 module.exports = {
     mode: 'development',
     resolve: {
@@ -26,18 +35,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'API_URL': JSON.stringify('http://localhost:4001')
-            }
-        })
+        definePlugin
     ],
     devServer: {
         historyApiFallback: true
-    },
-    externals: {
-        config: JSON.stringify({
-            apiUrl: 'http://localhost:4001'
-        })
     }
 }

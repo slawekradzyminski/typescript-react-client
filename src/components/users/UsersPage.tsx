@@ -6,7 +6,7 @@ import { ToastContext } from '../../context/ToastContext';
 import ThemedContainer from '../core/ThemedContainer';
 import { Roles, User } from '../../types';
 
-function DoctorsPage() {
+function UsersPage() {
     const [users, setUsers] = useState([]);
     const setToast = useContext(ToastContext);
 
@@ -53,4 +53,4 @@ function DoctorsPage() {
     );
 }
 
-export default DoctorsPage;
+export default UsersPage;

@@ -4,10 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { loggedInPages, pagePaths, loggedOutPages, openSlots } from '../navbarConstants';
+import { loggedInPages, pagePaths, loggedOutPages } from '../navbarConstants';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../_reducers';
-import { isDoctorOrAdmin } from '../rolesHelper';
 
 const DesktopView = () => {
     const location = useLocation();
@@ -55,9 +54,6 @@ const DesktopView = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {loggedIn ? renderButtons(loggedInPages) : renderButtons(loggedOutPages)}
-                {loggedIn && isDoctorOrAdmin(userRoles) && (
-                    renderButtons(openSlots)
-                )}
             </Box>
         </>
     )
