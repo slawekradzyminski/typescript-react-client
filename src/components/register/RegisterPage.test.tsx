@@ -48,7 +48,7 @@ describe('RegisterPage with Mock RegisterForm', () => {
 
         // then
         await waitFor(() => {
-            expect(mockNavigate).toHaveBeenCalledWith('/login');
+            expect(mockNavigate).toHaveBeenCalledWith('/login', { state: { from: '/' } });
             expect(mockSetToast).toHaveBeenCalledWith({ type: 'success', message: 'Registration successful!' });
         });
     });
@@ -71,7 +71,7 @@ describe('RegisterPage with Mock RegisterForm', () => {
     
         // then
         await waitFor(() => {
-            expect(mockSetToast).toHaveBeenCalledWith({ type: 'error', message: errorMessage });
+            expect(mockSetToast).toHaveBeenCalledWith({ type: 'error' , message: errorMessage });
         });
     });
 });

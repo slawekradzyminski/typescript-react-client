@@ -31,7 +31,8 @@ export const handleImageResponse = async (response: Response) => {
 }
 
 const handleUnauthorizedError = () => {
-    window.location.href = '/login';
+    const basename = process.env.NODE_ENV === 'production' ? '/typescript-react-client' : '';
+    window.location.href = `${basename}/login`;
     throw new Error('Not authenticated');
 }
 

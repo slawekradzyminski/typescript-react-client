@@ -107,7 +107,7 @@ describe('UserTable', () => {
         fireEvent.click(editButtons[1]);
 
         // then
-        expect(mockNavigate).toHaveBeenCalledWith('/edit-user', { state: { user: users[1] } });
+        expect(mockNavigate).toHaveBeenCalledWith('/edit-user', { state: { user: users[1], from: '/' } });
     });
 
     test('calls emailUser when email button is clicked', () => {
@@ -126,7 +126,7 @@ describe('UserTable', () => {
         fireEvent.click(emailButtons[0]);
 
         // then
-        expect(mockNavigate).toHaveBeenCalledWith('/email', { state: { user: users[0] } });
+        expect(mockNavigate).toHaveBeenCalledWith('/email', { state: { user: users[0], from: '/' } });
     });
 
 });

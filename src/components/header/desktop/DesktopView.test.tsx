@@ -57,7 +57,7 @@ describe('DesktopView', () => {
 
         fireEvent.click(screen.getByText('Login'));
 
-        expect(mockNavigate).toHaveBeenCalledWith('/login');
+        expect(mockNavigate).toHaveBeenCalledWith('/login', { state: { from: '/' } });
     });
 
     test('navigates to correct page on button click as logged in', () => {
@@ -72,7 +72,7 @@ describe('DesktopView', () => {
         renderWithRedux(<MemoryRouter><DesktopView /></MemoryRouter>, { initialState });
         fireEvent.click(screen.getByText('QR Codes'));
 
-        expect(mockNavigate).toHaveBeenCalledWith('/qr');
+        expect(mockNavigate).toHaveBeenCalledWith('/qr', { state: { from: '/' } });
     });
 
     test('active menu item is bolded', () => {
