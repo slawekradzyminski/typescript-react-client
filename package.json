@@ -6,9 +6,9 @@
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
-        "build": "webpack --mode production",
+        "build": "cross-env API_URL=https://java-backend-server-1-0.onrender.com webpack --mode production",
         "test": "jest",
-        "start": "cross-env NODE_OPTIONS='--dns-result-order=ipv4first' && webpack-dev-server --host 127.0.0.1 --open --port 8081"
+        "start": "cross-env API_URL=http://localhost:4001 webpack serve --open --port 8081"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
@@ -18,6 +18,7 @@
         "@mui/x-date-pickers": "^6.18.6",
         "@reduxjs/toolkit": "^2.0.1",
         "date-fns": "^2.30.0",
+        "dotenv": "^16.4.5",
         "moment": "^2.30.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

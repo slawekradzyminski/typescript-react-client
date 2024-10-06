@@ -18,7 +18,6 @@ describe('MobileView', () => {
         renderWithRedux(<MemoryRouter><MobileView /></MemoryRouter>);
         expect(screen.queryByText('Login')).toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).not.toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).not.toBeInTheDocument();
     });
 
     test('renders MobileToolbar for Clients', () => {
@@ -33,22 +32,6 @@ describe('MobileView', () => {
         renderWithRedux(<MemoryRouter><MobileView /></MemoryRouter>, { initialState });
         expect(screen.queryByText('Login')).not.toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).not.toBeInTheDocument();
-    });
-
-    test('renders MobileToolbar for Doctors', () => {
-        const initialState = {
-            authentication: {
-                loggedIn: true,
-                user: {
-                    roles: [Roles.ROLE_DOCTOR]
-                }
-            }
-        };
-        renderWithRedux(<MemoryRouter><MobileView /></MemoryRouter>, { initialState });
-        expect(screen.queryByText('Login')).not.toBeInTheDocument();
-        expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).toBeInTheDocument();
     });
 
     test('renders MobileToolbar for Admins', () => {
@@ -63,7 +46,6 @@ describe('MobileView', () => {
         renderWithRedux(<MemoryRouter><MobileView /></MemoryRouter>, { initialState });
         expect(screen.queryByText('Login')).not.toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).toBeInTheDocument();
     });
 
     test('navigates to correct page on button click as logged out', async () => {

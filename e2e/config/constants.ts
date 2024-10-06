@@ -1,2 +1,2 @@
-export const backendUrl = 'https://java-backend-server-1-0.onrender.com'
+export const backendUrl = 'http://localhost:4001'
 export const fakeToken = 'fakeToken'

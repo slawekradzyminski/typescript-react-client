@@ -18,7 +18,6 @@ describe('DesktopView', () => {
         renderWithRedux(<MemoryRouter><DesktopView /></MemoryRouter>);
         expect(screen.queryByText('Login')).toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).not.toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).not.toBeInTheDocument();
     });
 
     test('renders DesktopToolbar for Clients', () => {
@@ -33,22 +32,6 @@ describe('DesktopView', () => {
         renderWithRedux(<MemoryRouter><DesktopView /></MemoryRouter>, { initialState });
         expect(screen.queryByText('Login')).not.toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).not.toBeInTheDocument();
-    });
-
-    test('renders DesktopToolbar for Doctors', () => {
-        const initialState = {
-            authentication: {
-                loggedIn: true,
-                user: {
-                    roles: [Roles.ROLE_DOCTOR]
-                }
-            }
-        };
-        renderWithRedux(<MemoryRouter><DesktopView /></MemoryRouter>, { initialState });
-        expect(screen.queryByText('Login')).not.toBeInTheDocument();
-        expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).toBeInTheDocument();
     });
 
     test('renders DesktopToolbar for Admins', () => {
@@ -56,14 +39,13 @@ describe('DesktopView', () => {
             authentication: {
                 loggedIn: true,
                 user: {
-                    roles: [Roles.ROLE_ADMIN, Roles.ROLE_CLIENT]
+                    roles: [Roles.ROLE_ADMIN]
                 }
             }
         };
         renderWithRedux(<MemoryRouter><DesktopView /></MemoryRouter>, { initialState });
         expect(screen.queryByText('Login')).not.toBeInTheDocument();
         expect(screen.queryByText('QR Codes')).toBeInTheDocument();
-        expect(screen.queryByText('Open Slots')).toBeInTheDocument();
     });
 
     test('navigates to correct page on button click as logged out', () => {

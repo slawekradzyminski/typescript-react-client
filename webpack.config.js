@@ -1,12 +1,15 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// Load environment variables from .env file
+dotenv.config();
+
+const apiUrl = process.env.API_URL || 'https://java-backend-server-1-0.onrender.com';
 
 const definePlugin = new webpack.DefinePlugin({
     'process.env': {
-        'API_URL': JSON.stringify(process.env.NODE_ENV === 'production'
-            ? 'https://java-backend-server-1-0.onrender.com'
-            : 'http://localhost:4001'
-        )
+        'API_URL': JSON.stringify(apiUrl)
     }
 });
 
