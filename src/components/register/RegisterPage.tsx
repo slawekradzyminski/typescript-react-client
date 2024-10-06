@@ -13,7 +13,7 @@ function RegisterPage() {
         try {
             await userService.register(user);
             setToast({ type: 'success', message: 'Registration successful!' });
-            navigate('/login')
+            navigate('/login', { state: { from: location.pathname } });
             return user;
         } catch (error) {
             setToast({ type: 'error', message: error.toString() });

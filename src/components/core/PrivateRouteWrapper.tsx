@@ -32,7 +32,7 @@ function PrivateRouteWrapper({ children }) {
     return (
         loggedIn || auth
             ? children
-            : <Navigate to="/login" replace state={{ from: location }} />
+            : <Navigate to="/login" replace state={{ from: location.pathname }} />
     );
 }
 

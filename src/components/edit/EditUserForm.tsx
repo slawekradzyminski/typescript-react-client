@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Box } from "@mui/material";
 import { Roles, EditUser, User } from '../../types';
 import RolesCheckboxGroup from '../common/RolesCheckboxGroup';
@@ -13,6 +13,7 @@ interface Props {
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const EditUserForm: React.FC<Props> = ({ user, onSubmit }) => {
+    const navigate = useNavigate();
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
     const [email, setEmail] = useState(user.email);
@@ -56,6 +57,10 @@ const EditUserForm: React.FC<Props> = ({ user, onSubmit }) => {
         }
 
         onSubmit({ firstName, lastName, email, roles });
+    };
+
+    const handleCancel = () => {
+        navigate('/', { state: { from: location.pathname } });
     };
 
     return (
@@ -115,7 +120,13 @@ const EditUserForm: React.FC<Props> = ({ user, onSubmit }) => {
             >
                 Edit User
             </Button>
-            <Button component={Link} to="/" variant="text" fullWidth>Cancel</Button>
+            <Button 
+                onClick={handleCancel} 
+                variant="text" 
+                fullWidth
+            >
+                Cancel
+            </Button>
         </Box>
     );
 };

@@ -13,7 +13,6 @@ const DesktopView = () => {
     const navigate = useNavigate();
     const loggedIn = useSelector((state: RootState) => state.authentication.loggedIn);
     const user = useSelector((state: RootState) => state.authentication.user);
-    const userRoles = user?.roles || [];
 
     const renderButtons = (pages: string[]) => (
         pages.map((page) => {
@@ -22,7 +21,7 @@ const DesktopView = () => {
                 <Button
                     key={page}
                     sx={{ my: 2, color: 'white', display: 'block', fontWeight: active ? 'bold' : 'normal' }}
-                    onClick={() => navigate(pagePaths[page])}
+                    onClick={() => navigate(pagePaths[page], { state: { from: location.pathname } })}
                 >
                     {page}
                 </Button>
@@ -48,7 +47,7 @@ const DesktopView = () => {
                     textDecoration: 'none',
                     cursor: 'pointer'
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/', { state: { from: location.pathname } })}
             >
                 HOME
             </Typography>

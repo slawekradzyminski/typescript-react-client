@@ -34,7 +34,7 @@ function LoginForm({ onSubmit }) {
 
     const handleSignUpClick = (event) => {
         event.preventDefault();
-        navigate('/register');
+        navigate('/register', { state: { from: location.pathname } });
     };
 
     return (

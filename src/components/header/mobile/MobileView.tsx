@@ -16,7 +16,6 @@ const MobileView = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const loggedIn = useSelector((state: RootState) => state.authentication.loggedIn);
-    const user = useSelector((state: RootState) => state.authentication.user);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -34,7 +33,7 @@ const MobileView = () => {
                     key={page}
                     onClick={() => {
                         handleCloseNavMenu();
-                        navigate(pagePaths[page]);
+                        navigate(pagePaths[page], { state: { from: location.pathname } });
                     }}
                     sx={{ fontWeight: active ? 'bold' : 'normal' }}
                 >
@@ -94,7 +93,7 @@ const MobileView = () => {
                     textDecoration: 'none',
                     cursor: 'pointer'
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/', { state: { from: location.pathname } })}
             > HOME
             </Typography>
         </>

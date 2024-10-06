@@ -1,10 +1,12 @@
 import { Box, Button, FormHelperText, TextField, TextareaAutosize } from '@mui/material';
-import { Link } from 'react-router-dom'
 import React, { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { sendEmail } from '../../api/email/email.api';
 import { ToastContext } from '../../context/ToastContext';
 
 function EmailForm({ to }) {
+    const navigate = useNavigate();
+    const location = useLocation();
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [submitted, setSubmitted] = useState(false);
@@ -28,6 +30,10 @@ function EmailForm({ to }) {
         } catch (error) {
             setToast({ type: 'error', message: error.toString() });
         }
+    };
+
+    const handleCancel = () => {
+        navigate('/', { state: { from: location.pathname } });
     };
 
     return (
@@ -54,7 +60,7 @@ function EmailForm({ to }) {
             {messageError && <FormHelperText error>Message must be at least 3 characters long</FormHelperText>}
             <Box sx={{ mt: 2, mb: 2 }}>
                 <Button type="submit" variant="contained" color="primary" fullWidth>Send email</Button>
-                <Button component={Link} to="/" variant="text" fullWidth>Cancel</Button>
+                <Button onClick={handleCancel} variant="text" fullWidth>Cancel</Button>
             </Box>
         </Box>
     );

@@ -25,7 +25,7 @@ function RoutesComponent() {
             <Route path="/edit-user" element={wrapInPrivateRoute(EditUserComponent)} />
             <Route path="/qr" element={wrapInPrivateRoute(QrComponent)} />
             <Route path="/email" element={wrapInPrivateRoute(EmailComponent)} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/" replace state={{ from: location.pathname }} />} />
         </Routes>
     );
 }

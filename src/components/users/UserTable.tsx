@@ -17,11 +17,11 @@ const UserTable: React.FC<UserTableProps> = ({ users, handleDelete }) => {
     const isAdmin = user.roles.includes(Roles.ROLE_ADMIN);
 
     const editUser = (user: User) => {
-        navigate('/edit-user', { state: { user } });
+        navigate('/edit-user', { state: { user, from: location.pathname } });
     }
 
     const emailUser = (user: User) => {
-        navigate('/email', { state: { user } });
+        navigate('/email', { state: { user, from: location.pathname } });
     }
 
     return (

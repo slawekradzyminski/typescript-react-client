@@ -18,7 +18,7 @@ function EditUserComponent() {
         try {
             await userService.update(user.username, editUser);
             setToast({ type: 'success', message: 'Updating user successful!' });
-            navigate('/')
+            navigate('/', { state: { from: location.pathname } });
         } catch (error) {
             setToast({ type: 'error', message: error.toString() });
         }

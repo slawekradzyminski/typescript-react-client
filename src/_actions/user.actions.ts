@@ -10,7 +10,7 @@ export const login = createAsyncThunk<User,
         async ({ username, password, from, navigate, setToast }, { rejectWithValue }) => {
             try {
                 const user = await userService.login(username, password);
-                navigate(from);
+                navigate(from, { state: { from: location.pathname } });
                 return user;
             } catch (error) {
                 setToast({ type: 'error', message: error.toString() });
