@@ -4,7 +4,7 @@ import { getRandomUser } from '../generator/userGenerator';
 import { User } from '../../src/types';
 
 export async function mockRefresh(page: Page): Promise<void> {
-    await page.route(`${backendUrl}/users/refresg`, route => route.fulfill({
+    await page.route(`${backendUrl}/users/refresh`, route => route.fulfill({
         status: 200,
         body: JSON.stringify(getRandomUser())
     }));
