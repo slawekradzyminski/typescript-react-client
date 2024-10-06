@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { mockLogout } from '../mocks/logout.mock';
-import { mockUsers } from '../mocks/getUsers.mock';
 import { failedLoginMessage, mockFailedLogin, mockSuccessfulLoginForUser } from '../mocks/login.mock';
 import { getRandomUser } from '../generator/userGenerator';
 import { mockRefreshForUser } from '../mocks/refresh.mock';
@@ -8,7 +7,7 @@ import { mockRefreshForUser } from '../mocks/refresh.mock';
 test.describe('Login', () => {
   test.beforeEach(async ({ page }) => {
     await mockLogout(page);
-    await page.goto('http://localhost:8081/login');
+    await page.goto('http://localhost:8081/#/login');
   });
 
   test('successful login', async ({ page }) => {

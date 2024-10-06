@@ -2,7 +2,8 @@
     "name": "test-frontend",
     "version": "1.0.0",
     "license": "MIT",
-    "homepage": "https://slawekradzyminski.github.io/typescript-react-client",
+    "private": false,
+    "homepage": "https://slawekradzyminski.github.io/typescript-react-client/#",
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
