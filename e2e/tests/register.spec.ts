@@ -6,7 +6,7 @@ import { mockLogout } from '../mocks/logout.mock';
 
 test.describe('Register', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:8081/register');
+        await page.goto('http://localhost:8081/#/register');
         await mockLogout(page);
     });
 
